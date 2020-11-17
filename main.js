@@ -3,7 +3,7 @@ const blue = document.getElementById("blue");
 const red = document.getElementById("red");
 const yellow = document.getElementById("yellow");
 const green = document.getElementById("green");
-const lastLevel = 2;
+const lastLevel = 10;
 
 
 class Juego {
@@ -16,7 +16,7 @@ class Juego {
     inicializar() {
         this.nextLevel = this.nextLevel.bind(this);
         this.chooseColor = this.chooseColor.bind(this);
-        btnStart.classList.add('hide');
+        this.toggleBtnStart();
         this.level = 1;
         this.colors = {
             blue,
@@ -27,7 +27,12 @@ class Juego {
         console.log(this.colors)
     }
     toggleBtnStart(){
-        
+        if(btnStart.classList.contains('hide')){
+            btnStart.classList.remove('hide');
+        }
+        else{
+            btnStart.classList.add('hide');
+        }
     }
     generateSecuence() {
         this.secuence = new Array(10).fill(0).map(n => Math.floor(Math.random() * 4));
